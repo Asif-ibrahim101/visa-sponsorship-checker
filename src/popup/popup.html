@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Visa Sponsorship Checker</title>
+    <link rel="stylesheet" href="../ui.css" />
+    <style>
+      body { width: 300px; padding: 14px; }
+      section { padding: 10px 0; border-top: 1px solid var(--line); }
+      section:first-of-type { border-top: 0; padding-top: 0; }
+      #counts { display: grid; grid-template-columns: 1fr auto; gap: 6px 12px; align-items: center; margin: 0; }
+      #counts dt { margin: 0; }
+      #counts dd { margin: 0; font-variant-numeric: tabular-nums; font-weight: 600; text-align: right; }
+      .row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+      footer { padding-top: 10px; border-top: 1px solid var(--line); }
+    </style>
+  </head>
+  <body>
+    <h1>Visa Sponsorship Checker</h1>
+
+    <section>
+      <h2>This page</h2>
+      <dl id="counts"></dl>
+      <p id="counts-empty" class="muted" hidden>Open a job search or job page on a supported site to see counts.</p>
+    </section>
+
+    <section>
+      <label><input type="checkbox" id="hideAgency" /> Hide agency posts (Unknown employer)</label>
+      <label><input type="checkbox" id="hide" /> Hide No and Not licensed jobs</label>
+    </section>
+
+    <section>
+      <h2>Sponsor register</h2>
+      <p id="register-meta" class="muted">Checking…</p>
+      <p id="register-error" class="error" hidden></p>
+      <button id="refresh" type="button">Refresh register</button>
+    </section>
+
+    <footer>
+      <button id="open-settings" class="link" type="button">Settings</button>
+    </footer>
+
+    <script type="module" src="./popup.ts"></script>
+  </body>
+</html>

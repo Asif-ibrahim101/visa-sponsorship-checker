@@ -1,0 +1,41 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="shared.css"><link rel="stylesheet" href="../../src/ui.css"><link rel="stylesheet" href="../../src/content/styles.css">
+<style>
+  body { background: linear-gradient(135deg, #0a6b37, #12a157); color: #fff; }
+  .wrap { display: grid; grid-template-columns: 1fr 380px; gap: 56px; align-items: center; height: 800px; padding: 0 90px; }
+  h2 { font-size: 44px; line-height: 1.15; margin: 0 0 20px; }
+  .lead { font-size: 20px; opacity: .95; margin: 0 0 28px; }
+  ul { padding: 0; margin: 0; list-style: none; font-size: 18px; }
+  li { margin: 0 0 12px; padding-left: 30px; position: relative; }
+  li::before { content: "✓"; position: absolute; left: 0; font-weight: 700; }
+  .popup { background: #fff; color: #1b1f23; width: 340px; border-radius: 14px; padding: 18px; box-shadow: 0 24px 60px rgba(0,0,0,.35); font-size: 14px; }
+  .popup h1 { font-size: 16px; } .popup section { padding: 10px 0; border-top: 1px solid #d9dce1; } .popup section:first-of-type { border-top: 0; padding-top: 0; }
+  .popup dl { display: grid; grid-template-columns: 1fr auto; gap: 6px 12px; margin: 0; } .popup dd { margin: 0; font-weight: 600; text-align: right; } .popup dt { margin: 0; }
+  .popup label { margin: 4px 0; } .popup h2 { font-size: 14px; color: #1b1f23; margin: 0 0 8px; }
+</style></head><body>
+<div class="wrap">
+  <div>
+    <h2>Stop guessing which jobs will sponsor your visa.</h2>
+    <p class="lead">Every listing checked against the Home Office sponsor register and its own advert, right where you search.</p>
+    <ul>
+      <li>LinkedIn, Indeed, Workday, Greenhouse, Lever, Ashby and more</li>
+      <li>Hover to see exactly why, right-click to correct</li>
+      <li>Agency posts hidden, entry-level roles highlighted</li>
+      <li>Runs in your browser: no account, no tracking</li>
+    </ul>
+  </div>
+  <div class="popup">
+    <h1>Visa Sponsorship Checker</h1>
+    <section><h2>This page</h2><dl>
+      <dt><span class="pill sponsors">Sponsors</span></dt><dd>4</dd>
+      <dt><span class="pill possible">Possible</span></dt><dd>11</dd>
+      <dt><span class="pill unlikely">Unlikely</span></dt><dd>3</dd>
+      <dt><span class="pill no">No</span></dt><dd>2</dd>
+      <dt><span class="pill not_licensed">Not licensed</span></dt><dd>5</dd>
+      <dt><span class="pill entry">Entry level</span></dt><dd>7</dd>
+    </dl></section>
+    <section><label><input type="checkbox" checked> Hide agency posts (Unknown employer)</label><label><input type="checkbox"> Hide No and Not licensed jobs</label></section>
+    <section><h2>Sponsor register</h2><p style="color:#5f6772;font-size:12px;margin:0 0 8px">Updated 13 Nov 2026 · 122,244 Skilled Worker sponsors</p><button>Refresh register</button></section>
+  </div>
+</div>
+</body></html>

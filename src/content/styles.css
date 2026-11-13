@@ -1,0 +1,167 @@
+/* Every rule is scoped to .vsc-* or [data-vsc-status] so LinkedIn's own styles are untouched. */
+
+/* The status badge and the extra pills share a shape. */
+.vsc-badge,
+.vsc-extra {
+  display: inline-block;
+  box-sizing: border-box;
+  margin-left: 6px;
+  padding: 1px 7px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font: 600 11px/16px -apple-system, system-ui, 'Segoe UI', Roboto, sans-serif;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: default;
+  user-select: none;
+  position: relative;
+  z-index: 1;
+}
+.vsc-extra { margin-left: 4px; color: #fff; }
+.vsc-level { background: #5b3cc4; }
+.vsc-abroad { background: #334155; }
+.vsc-badge.vsc-large,
+.vsc-extra.vsc-large {
+  display: inline-block;
+  margin: 6px 0 2px;
+  padding: 3px 12px;
+  font-size: 13px;
+  line-height: 20px;
+}
+.vsc-badge:focus-visible {
+  outline: 2px solid #0a66c2;
+  outline-offset: 2px;
+}
+
+.vsc-sponsors { background: #0b7a3e; color: #fff; }
+.vsc-possible { background: #f2c230; color: #3a2c00; }
+.vsc-unlikely { background: #b4530b; color: #fff; }
+.vsc-no { background: #c02626; color: #fff; }
+.vsc-not_licensed { background: #6b7280; color: #fff; }
+.vsc-unknown { background: #4b5f7a; color: #fff; }
+
+/* Advert not read yet: same colour, dashed edge. */
+.vsc-badge.vsc-provisional {
+  border-style: dashed;
+  border-color: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.35);
+}
+
+html.vsc-dim [data-vsc-status='no'],
+html.vsc-dim [data-vsc-status='not_licensed'] {
+  opacity: var(--vsc-opacity, 0.4);
+  transition: opacity 120ms ease;
+}
+html.vsc-dim [data-vsc-status='no']:hover,
+html.vsc-dim [data-vsc-status='not_licensed']:hover,
+html.vsc-dim [data-vsc-status='no']:focus-within,
+html.vsc-dim [data-vsc-status='not_licensed']:focus-within {
+  opacity: 1;
+}
+html.vsc-hide [data-vsc-status='no'],
+html.vsc-hide [data-vsc-status='not_licensed'],
+html.vsc-hide-agency [data-vsc-status='unknown'] {
+  display: none !important;
+}
+
+/* 2026 layout: cards sit in display:contents wrappers with a rule between them. */
+html.vsc-hide [data-testid='lazy-column'] > div:has([data-vsc-status='no']) + hr,
+html.vsc-hide [data-testid='lazy-column'] > div:has([data-vsc-status='not_licensed']) + hr,
+html.vsc-hide-agency [data-testid='lazy-column'] > div:has([data-vsc-status='unknown']) + hr {
+  display: none !important;
+}
+
+/* Pages with no heading to sit next to get the badge in a corner. */
+.vsc-float {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 2147482000;
+  padding: 6px 8px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.vsc-tip,
+.vsc-menu {
+  position: fixed;
+  z-index: 2147483000;
+  box-sizing: border-box;
+  max-width: 340px;
+  border-radius: 8px;
+  background: #1d2226;
+  color: #f3f4f6;
+  font: 400 12px/1.45 -apple-system, system-ui, 'Segoe UI', Roboto, sans-serif;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+  text-align: left;
+}
+.vsc-tip {
+  padding: 9px 11px;
+  pointer-events: none;
+}
+.vsc-tip-reason {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.vsc-tip-line {
+  color: #d1d5db;
+  overflow-wrap: anywhere;
+}
+.vsc-tip-hint {
+  margin-top: 6px;
+  color: #9ca3af;
+  font-size: 11px;
+}
+
+.vsc-menu {
+  width: 260px;
+  padding: 4px 0 6px;
+}
+.vsc-menu-title {
+  padding: 8px 12px 3px;
+  color: #9ca3af;
+  font-size: 11px;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.vsc-menu-item {
+  display: block;
+  width: 100%;
+  padding: 6px 12px;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  overflow-wrap: anywhere;
+}
+.vsc-menu-item:hover,
+.vsc-menu-item:focus-visible {
+  background: #374151;
+  outline: none;
+}
+.vsc-menu-input {
+  display: block;
+  box-sizing: border-box;
+  width: calc(100% - 24px);
+  margin: 4px 12px 6px;
+  padding: 5px 8px;
+  border: 1px solid #4b5563;
+  border-radius: 6px;
+  background: #111418;
+  color: #f3f4f6;
+  font: inherit;
+}
+.vsc-menu-results {
+  max-height: 220px;
+  overflow-y: auto;
+}
+.vsc-menu-empty {
+  padding: 6px 12px;
+  color: #9ca3af;
+}

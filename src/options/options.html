@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Visa Sponsorship Checker settings</title>
+    <link rel="stylesheet" href="../ui.css" />
+    <style>
+      body { padding: 24px 16px 48px; }
+      main { max-width: 640px; margin: 0 auto; }
+      h1 { font-size: 20px; margin-bottom: 20px; }
+      section { padding: 18px 0; border-top: 1px solid var(--line); }
+      fieldset { margin: 0; padding: 0; border: 0; }
+      legend { padding: 0; font-weight: 600; margin-bottom: 8px; }
+      .choice { margin-bottom: 8px; flex-wrap: wrap; }
+      .choice input[type='number'] { width: 110px; }
+      .field { display: block; margin-bottom: 14px; }
+      .field > span { display: block; font-weight: 600; margin-bottom: 4px; }
+      #opacity-row { margin-top: 10px; }
+      #overrides { list-style: none; margin: 0; padding: 0; }
+      #overrides li { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 6px 0; border-bottom: 1px solid var(--line); }
+      #saved { position: fixed; right: 16px; bottom: 16px; padding: 6px 12px; border-radius: 6px; background: var(--panel); border: 1px solid var(--line); }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Visa Sponsorship Checker settings</h1>
+
+      <section>
+        <fieldset>
+          <legend>Salary floor</legend>
+          <p class="muted">Jobs from licensed sponsors paying less than this are marked Unlikely. Check GOV.UK when the rules change.</p>
+          <label class="choice">
+            <input type="radio" name="floorMode" value="new_entrant" /> New entrant
+            £<input type="number" id="newEntrantFloor" min="0" step="100" aria-label="New entrant floor in pounds" />
+          </label>
+          <label class="choice">
+            <input type="radio" name="floorMode" value="general" /> General
+            £<input type="number" id="generalFloor" min="0" step="100" aria-label="General floor in pounds" />
+          </label>
+          <label class="choice">
+            <input type="radio" name="floorMode" value="custom" /> Custom
+            £<input type="number" id="customFloor" min="0" step="100" aria-label="Custom floor in pounds" />
+          </label>
+        </fieldset>
+      </section>
+
+      <section>
+        <h2>Extra phrases</h2>
+        <p class="muted">One per line, not case-sensitive. Put a word in brackets to make it optional, e.g. "offer (visa) sponsorship".</p>
+        <label class="field">
+          <span>Means sponsorship is offered</span>
+          <textarea id="extraPositive" spellcheck="false"></textarea>
+        </label>
+        <label class="field">
+          <span>Means no sponsorship</span>
+          <textarea id="extraNegative" spellcheck="false"></textarea>
+        </label>
+      </section>
+
+      <section>
+        <h2>Display</h2>
+        <label><input type="checkbox" id="hideAgency" /> Hide agency posts (Unknown employer)</label>
+        <label><input type="checkbox" id="dimming" /> Dim No and Not licensed jobs</label>
+        <label id="opacity-row">
+          Dimmed opacity
+          <input type="range" id="opacity" min="0.1" max="0.9" step="0.05" />
+          <output id="opacity-value"></output>
+        </label>
+      </section>
+
+      <section>
+        <h2>Your overrides</h2>
+        <p id="overrides-empty" class="muted">None yet. Right-click a badge on LinkedIn to add one.</p>
+        <ul id="overrides"></ul>
+      </section>
+    </main>
+    <div id="saved" role="status" hidden>Saved</div>
+    <script type="module" src="./options.ts"></script>
+  </body>
+</html>
